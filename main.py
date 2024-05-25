@@ -4,12 +4,18 @@
 from yt_dlp import YoutubeDL
 
 # Video Download function
-def download_video(video_url):
+def download_video():
+    # Input video's URL and video type
+    url = input('Enter the video url: ')
+    type = input('Enter the video type(mp4|mp3): ')
+    # Setup
     options = {
         "outtmpl": "D:/video/source/%(id)s_%(title)s.%(ext)s",
-        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
+        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": type}],
     }
-    YoutubeDL(options).download(video_url)
 
-# work
-download_video('https://www.youtube.com/watch?v=F2Ib564MBFo')
+    # Download
+    YoutubeDL(options).download(url)
+
+# Work
+download_video()
